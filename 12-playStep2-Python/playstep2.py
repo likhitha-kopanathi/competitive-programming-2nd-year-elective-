@@ -33,6 +33,54 @@
 # into a sorted hand.
 # Hint: Also, remember to use % to get the one's digit, and use //= to get rid of the one's digit.
 
+def handtodice(hand):
+	# your code goes here
+	digit1 = hand//100
+	digit2 = (hand%100)//10
+	digit3 = hand%10
+	return digit1, digit2, digit3
+def dicetoorderedhand(a, b, c):
+	# your code goes here
+	largest = max(a,b,c)
+	smallest = min(a,b,c)
+	medium = a+b+c-largest-smallest
+	return largest*(10**2) + medium*10 +smallest
+def casenum(hand):
+	digit1, digit2, digit3 = handtodice(hand)
+	if digit1==digit2==digit3:
+		return 3
+	elif digit1!=digit2!=digit3:
+		return 1
+	else:
+		return 2
 def playstep2(hand, dice):
 	# your code goes here
-	pass
+	case = casenum(hand)
+	a,b,c = handtodice(hand)
+	orderedHand = dicetoorderedhand(a,b,c)
+	#case1
+	if case == 3:
+		return hand,dice
+	#case2
+	elif case == 2:
+		num1,num2,num3 = handtodice(orderedHand)
+		num4 = dice%10
+		if num1 == num2:
+			newHand = dicetoorderedhand(num1, num2, num4)
+			return newHand, dice//10
+		elif num1 == num3:
+			newHand = dicetoorderedhand(num1,num3,num4)
+			return newHand, dice//10
+		else:
+			newHand = dicetoorderedhand(num3, num2, num4)
+			return newHand, dice//10
+	#case3
+	else:
+		num1, num2, num3 = handtodice(orderedHand)
+		nextrolls = dice%100
+		n1, n2, n3 = handtodice(num1*100 + nextrolls)
+		newHand = dicetoorderedhand(n1, n2, n3)
+		return newHand, dice//100
+
+
+	
