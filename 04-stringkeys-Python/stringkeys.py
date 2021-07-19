@@ -4,7 +4,7 @@ using the first two letters of the string."""
 
 class HashTable(object):
     def __init__(self):
-        self.table = [None]*10000
+        self.table = ['']*10000
 
     def store(self, string):
         """Input a string that's stored in 
