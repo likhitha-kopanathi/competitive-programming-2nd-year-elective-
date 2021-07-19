@@ -24,8 +24,8 @@
 def removeRowAndCol(L, row, col):
     # Your code goes here...
     l = len(L)
-    if(l==1 or l==0 or row==0 or col==0):
-        return "Cannot remove"
+    if(l==0):
+        return "Cannot remove row and col"
     else:
         for i in L:
             del i[col]
