@@ -12,7 +12,41 @@
 # [ [ 1, 2],
 #   [ 2, 1]]
 # Each row and each column add to 3, but one diagonal adds to 2 and the other to 4.
+def sumofrow(a):
+	rowsum = 0
+	for i in range(len(a)):
+		rowsum+=a[0][i]
+	for i in range(len(a)):
+		val = 0
+		for j in range(len(a)):
+			val+=a[i][j]
+		if val == rowsum:
+			return True
+
+def sumofcol(a):
+	colsum = 0
+	for i in range(len(a)):
+		colsum+=a[i][0]
+	for i in range(len(a)):
+		val = 0
+		for j in range(len(a)):
+			val+=a[i][j]
+		if val == colsum:
+			return True
+
+def sumofdiagonals(a):
+	d1 = 0
+	d2 = 0
+	for i in range(len(a)):
+		d1+=a[i][1]
+		d2+=a[len(a)-i-1][len(a)-i-1]
+	if d1==d2:
+		return True
+	else:
+		return False
+
 
 def ismostlymagicsquare(a):
-	# Your code goes here
-	pass
+	if(sumofrow(a)==True and sumofcol(a)==True and sumofdiagonals(a)==True):
+		return True
+	return False
