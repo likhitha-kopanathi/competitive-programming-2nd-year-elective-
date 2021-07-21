@@ -11,4 +11,16 @@
 
 def lookandsay(a):
 	# Your code goes here
-	pass
+	if a == []:
+		return a
+	count = 1
+	res = []
+	digit = a[0]
+	for currdigit in a[1:]:
+		if currdigit == digit:
+			count+=1
+		else:
+			res+= [(count, digit)]
+			count = 1
+			digit = currdigit
+	return res+[(count, digit)]
