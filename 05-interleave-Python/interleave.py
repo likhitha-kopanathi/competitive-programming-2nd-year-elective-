@@ -8,5 +8,11 @@
 
 
 def fun_interleave(s1,s2):
-	return ""
+	res = ""
+	i = 0
+	m = min(len(s1), len(s2))
+	while(i<m):
+		res+=s1[i]+s2[i]
+		i+=1
+	return res+s1[i:]+s2[i:]
 	
