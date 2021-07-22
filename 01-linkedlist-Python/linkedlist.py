@@ -34,13 +34,13 @@ class LinkedList(object):
         # Your code goes here
         pos = 1
         current = self.head
-        if(position<1):
+        if position < 1:
             return None
         while current and pos <= position:
             if pos == position:
                 return current
             current = current.next
-            pos+=1
+            pos += 1
         return None
 
     def insert(self, new_element, position):
@@ -51,14 +51,14 @@ class LinkedList(object):
         # Your code goes here
         pos = 1
         current = self.head
-        if pos>1:
-            while current and pos<position:
-                if pos == position-1:
+        if position > 1:
+            while current and pos < position:
+                if pos == position - 1:
                     new_element.next = current.next
                     current.next = new_element
                 current = current.next
-                pos+=1
-        elif position==1:
+                pos += 1
+        elif position == 1:
             new_element.next = self.head
             self.head = new_element
     
@@ -69,10 +69,10 @@ class LinkedList(object):
         # Your code goes here
         current = self.head
         previous = None
-        while current.value!=value and current.next:
+        while current.value != value and current.next:
             previous = current
             current = current.next
-        if current.value==value:
+        if current.value == value:
             if previous:
                 previous.next = current.next
             else:
