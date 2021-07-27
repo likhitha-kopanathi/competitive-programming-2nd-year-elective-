@@ -5,6 +5,30 @@
 # learn soon, it runs in O(n) time, where n=len(a)), and so in particular you may not sort 
 # the list.
 
+
+def ascending(a):
+	flag = 0
+	a1 = a[:]
+	a1.sort()
+	if(a1==a):
+		flag = 1
+	if(flag):
+		return True
+	else:
+		return False
+def descending(a):
+	flag = 0
+	i = 1
+	while i<len(a):
+		if(a[i]>a[i-1]):
+			flag=1
+		i+=1
+	if(not flag):
+		return True
+	else:
+		return False
 def issorted(a):
 	# your code goes here
-	pass
+	if(ascending(a) or (descending(a))):
+		return True
+	return False
