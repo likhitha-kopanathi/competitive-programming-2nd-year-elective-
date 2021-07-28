@@ -12,5 +12,19 @@
 
 
 def fun_isfactorish(n):
-	return False
+    n = abs(n) 
+    number = str(n) 
+    if(len(number) != 3): 
+        return False
+    first = (n // 10**2) 
+    middle = (n // 10) % 10 
+    last = (n % 10) 
+    if (first == 0 or middle == 0 or last == 0): 
+        return False
+    elif (first == middle or middle == last or last == first):
+        return False
+    elif (n%first == 0 and n%middle == 0 and n%last == 0): 
+        return True 
+    else: 
+        return False
 
