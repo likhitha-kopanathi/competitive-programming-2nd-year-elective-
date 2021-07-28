@@ -17,12 +17,11 @@ def prime(n):
     return True 
 
 def fun_nth_carolprime(n):
-    f=-1
     g=0
-    while(f<n):
-        x=(2**g-1)**2-2
-        if(prime(x)):
-            f+=1
-        g+=1
-    g=g-1
-    return (2**g-1)**2-2
+    num = 2
+    while(g<=n):
+        res=(2**num-1)**2-2
+        if(prime(res)):
+            g+=1
+        num+=1
+    return res
