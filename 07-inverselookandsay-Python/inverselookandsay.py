@@ -22,4 +22,14 @@
 
 def inverselookandsay(a):
 	# Your code goes here
-	pass
+	ans = [ ]
+	count = 0
+	number = 0
+	if len(a[0])==0:
+		return ans
+	for i in range(len(a)):
+		count = (a[i])[0]
+		number = (a[i])[1]
+		for c in range(count):
+			ans.append(number)
+	return ans
