@@ -23,7 +23,7 @@ def fun_wordwrap(s, n):
 		word = s[i:n+i]
 		word = word.replace(" ","-")
 		res+= word+'\n'
-	return res
+	return res.strip()
 
 
  
