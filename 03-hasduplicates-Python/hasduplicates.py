@@ -5,4 +5,17 @@
 
 def hasduplicates(L):
 	# Your code goes here
-	pass
+	
+	ele=[]
+	c=0
+	for row in range(len(L)):
+		for col in range(len(L[0])):
+			if(L[row][col] not in L):
+				ele.append(L[row][col])
+				c=c+1
+	ele=set(ele)
+	l=len(ele)
+	if(l==c):
+		return False
+	else:
+		return True
