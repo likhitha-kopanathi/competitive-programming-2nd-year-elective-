@@ -15,4 +15,19 @@
 
 def recursion_secondlargest(L):
 	# Your code goes here
-	pass
+	k = 2
+	l = len(L)
+	if l<2:
+		return None
+	else:
+		return secondlargest(k, L)
+
+def secondlargest(k,L):
+	m = max(L)
+	n = L.count(m)
+	if n>1:
+		return m
+	if k==1:
+		return max(L)
+	else:
+		return secondlargest(k-1, [i for i in L if i!=m])
