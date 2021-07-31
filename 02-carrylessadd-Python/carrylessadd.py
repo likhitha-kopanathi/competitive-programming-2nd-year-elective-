@@ -5,6 +5,23 @@
 # carryless sum. As the paper demonstrates, fun_carrylessadd(785, 376) returns 51.
 
 
+
+def digitCount(n):
+    n = abs(n)
+    if n == 0:
+        return 1
+    count = 0
+    while n > 0:
+        n = n // 10
+        count = count + 1
+    return count
+
 def fun_carrylessadd(x, y):
-	return 0
+	max_digit = max(digitCount(x), digitCount(y))
+	output = 0
+	for i in range(max_digit):
+		last_1 = x // (10**i) % 10
+		last_2 = y // (10**i) % 10
+		output += (last_1 + last_2) % 10 * (10 ** i)
+	return output
 
