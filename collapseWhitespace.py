@@ -16,7 +16,20 @@
 
 def cw(s):
     # Your code goes here...
-    return ""
+    curr = ''
+    prev = ''
+    for c in s:
+        if c.isalpha():
+            curr += c
+            prev = c
+        else:
+            if prev.isspace():
+                curr += ''
+                prev = c
+            else:
+                curr+= ' '
+                prev = c
+    return curr
 
 assert(cw("a\nb") == "a b")
 assert(cw("a\n   \t    b") == "a b")
