@@ -7,4 +7,14 @@
 
 def samechars(s1, s2):
 	# Your code goes here
-	pass
+	if type(s1) != type(s2):
+		return False
+	count = 0
+	for i in s2:
+		for j in range(len(s1)):
+			if(i == s1[j]):
+				count = count + 1
+				break
+	if (count == len(s2)):
+		return True
+	return False
