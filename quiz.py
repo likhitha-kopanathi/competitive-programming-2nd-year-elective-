@@ -6,20 +6,33 @@
 
 def bestQuiz(l):
     # Your  code goes ehre...
-    pass
+    currentAverage = 0 
+    bestAverage = 0 
+    numOfScores = 0 
+    bestQuiz = None
+    for c in range(len(l[0])): 
+        currSum = 0
+        numOfScores = 0 
+        for r in range(len(l)):
+            if (l[r][c] != -1):
+                numOfScores += 1
+                currSum += l[r][c] 
+        if numOfScores > 0:
+            currentAverage = currSum//numOfScores
+            if currentAverage > bestAverage: 
+                bestAverage = currentAverage
+                bestQuiz = c
+    return bestQuiz
+          
 
-def testBestQuiz():
-    print('Testing bestQuiz()...', end='')
-    a = [ [ 88,  80, 91 ],
-          [ 68, 100, -1 ]]
-    assert(bestQuiz(a) == 2)
-    a = [ [ 88,  80, 80 ],
-          [ 68, 100, 100 ]]
-    assert(bestQuiz(a) == 1)
-    a = [ [88, -1, -1 ],
-          [68, -1, -1 ]]
-    assert(bestQuiz(a) == 0)
-    a = [ [-1, -1, -1 ],
-          [-1, -1, -1 ]]
-    assert(bestQuiz(a) == None)
-    print('All test cases passed...!')
+# def testBestQuiz():
+#     print('Testing bestQuiz()...', end='')
+a = [ [ 88,  80, 91 ], [ 68, 100, -1 ]]
+assert(bestQuiz(a) == 2)
+a = [ [ 88,  80, 80 ], [ 68, 100, 100 ]]
+assert(bestQuiz(a) == 1)
+a = [ [88, -1, -1 ], [68, -1, -1 ]]
+assert(bestQuiz(a) == 0)
+a = [ [-1, -1, -1 ], [-1, -1, -1 ]]
+assert(bestQuiz(a) == None)
+print("All test cases passed...!")
