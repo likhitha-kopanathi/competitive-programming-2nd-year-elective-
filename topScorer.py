@@ -16,7 +16,32 @@
 
 def topScorer(data):
     # Your code goes here...
-    return ""
+    if data == '':
+        return None
+    return getbestplayer(data)
+
+def getbestplayer(data):
+    name = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    score = 0
+    playername = ''
+    for line in data.splitlines():
+        currscore = 0
+        currname = ''
+        for c in line.split(','):
+            if c[0] in name or c[0] in name.lower():
+                currname = c
+            else:
+                currscore+=int(c)
+            if currscore>score:
+                score = currscore
+                playername = currname
+            elif currscore == score:
+                if currname not in playername:
+                    playername+=","+currname
+    return playername
+
+            
+            
 
 data = '''\
 Fred,10,20,30,40
