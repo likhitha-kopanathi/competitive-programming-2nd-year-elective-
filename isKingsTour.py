@@ -18,6 +18,63 @@
 # returns True if it represents a legal Kings Tour 
 # and False otherwise.
 
+def getRowCol(L, i):
+    for row in range(len(L)):
+        for col in range(len(L[0])):
+            if (L[row][col] == i):
+                return [row,col]
+    return (-1,-1)
+
+def isValid (r1, c1, r2, c2):
+    if ((abs(r1 - r2) <= 1) and (abs(c1 - c2) <= 1)):
+        return True
+    return False
+
 def isKingsTour(board):
     # Your code goes here...
-    pass
+    l1 = len(board)
+    l2 = len(board[0])
+    for row in range(l1):
+        for col in range(l2):
+            if (board[row][col] == 0):
+                return False
+    i = 1
+    while (i < (l1 * l2)) :
+        r1, c1 = getRowCol(board, i)
+        r2, c2 = getRowCol(board, i + 1)
+        if (r1 == -1 or c1 == -1):
+            return False
+        i = i + 1
+        if (isValid(r1, c1, r2, c2) == False):
+            return False
+    return True
+
+a = [ [  3, 2, 1 ], [  6, 4, 9 ], [  5, 7, 8 ] ]
+assert(isKingsTour(a) == True)
+a = [ [  2, 8, 9 ], [  3, 1, 7 ], [  4, 5, 6 ] ]
+assert(isKingsTour(a) == True)
+a = [ [  7, 5, 4 ],
+          [  6, 8, 3 ],
+          [  1, 2, 9 ] ]
+assert(isKingsTour(a) == True)
+a = [ [  7, 5, 4 ],
+          [  6, 8, 3 ],
+          [  1, 2, 1 ] ]
+assert(isKingsTour(a) == False)
+a = [ [  3, 2, 9 ],
+          [  6, 4, 1 ],
+          [  5, 7, 8 ] ]
+assert(isKingsTour(a) == False)
+a = [ [  3, 2, 1 ],
+          [  6, 4, 0 ],
+          [  5, 7, 8 ] ]
+assert(isKingsTour(a) == False)
+a = [ [  1, 2, 3 ],
+          [  7, 4, 8 ],
+          [  6, 5, 9 ] ]
+assert(isKingsTour(a) == False)
+a = [ [ 3, 2, 1 ],
+          [ 6, 4, 0 ],
+          [ 5, 7, 8 ] ]
+assert(isKingsTour(a) == False)
+print("Passed!")
